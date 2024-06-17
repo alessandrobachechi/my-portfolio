@@ -1,0 +1,245 @@
+// Imports fonts that you will used in the application or in the template
+@import url("https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+// Import all your dependencies
+@import "lib/_bootstrap";
+
+// Import the base template
+@import "lib/_template";
+
+// Import your custom SCSS
+@import "mashup-example";
+
+body,
+html {
+  cursor: crosshair;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.description-container.container {
+  position: absolute;
+  top: 400px;
+  left: 100px;
+  z-index: 10;
+  pointer-events: none;
+
+  h1 {
+    color: white;
+  }
+}
+
+.descriptions-container.container {
+  position: absolute;
+  top: 150px;
+  left: 100px;
+
+  h1 {
+    color: black;
+  }
+}
+
+.descriptions-container-2.container {
+  position: absolute;
+  top: 220px;
+  left: 100px;
+
+  h1 {
+    color: black;
+  }
+}
+
+#coordinates {
+  position: absolute;
+  /* ackground: rgba(0, 0, 0, 0.5); */
+  color: white;
+  padding: 5px;
+  /* border-radius: 3px; */
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0.7;
+  mix-blend-mode: difference;
+  z-index: 20;
+}
+
+#datetime {
+  position: absolute;
+  position: fixed;
+  top: 28px;
+  right: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: right;
+  opacity: 0.6;
+  mix-blend-mode: difference;
+  z-index: 9999;
+}
+
+#crosshair-right,
+#crosshair-left,
+#crosshair-bottom,
+#crosshair-top {
+  position: absolute;
+  background: white;
+  z-index: 20;
+  opacity: 0.4;
+}
+
+#crosshair-right {
+  width: 100%;
+  height: 1px;
+}
+#crosshair-left {
+  width: 2000px;
+  height: 1px;
+}
+#crosshair-top {
+  width: 1px;
+  height: 2000px;
+}
+#crosshair-bottom {
+  width: 1px;
+  height: 100%;
+}
+
+.crosshair-container {
+  position: fixed;
+  inset: 0;
+  width: 100svw;
+  height: 100svh;
+  z-index: 20;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  z-index: 10;
+}
+
+.container {
+  width: 80%;
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid black;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-number {
+  font-size: 0.8em;
+  color: black;
+}
+
+.project-title {
+  font-size: 2em;
+}
+
+.project-details {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  color: black;
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 1.5em;
+  color: black;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Hidden by default */
+#mobile-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffcc00;
+  color: #000;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  /* Show the mobile message */
+  #mobile-message {
+    display: block;
+  }
+
+  /* Hide the datetime element on mobile */
+  #datetime {
+    display: none;
+  }
+
+  /* Hide the typed strings on mobile */
+  #typed-strings {
+    display: none;
+  }
+
+  /* Adjust body styling for mobile */
+  body.minimal {
+    font-size: 14px; /* Example adjustment */
+  }
+
+  /* Adjust container padding/margins for mobile */
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Adjust the crosshair container for mobile */
+  .crosshair-container {
+    display: none; /* Example to hide crosshair on mobile */
+  }
+
+  /* Adjust the navbar for mobile */
+  .navbar-toggle {
+    margin-right: 20px; /* Example adjustment */
+  }
+
+  .navbar-collapse {
+    text-align: center; /* Center align menu items */
+  }
+
+  .navbar-nav > li {
+    display: block; /* Stack nav items vertically */
+    margin: 10px 0; /* Add spacing between items */
+  }
+
+  /* Adjust hero text size for mobile */
+  .hero-full-wrapper .text-content h1 {
+    font-size: 24px; /* Example adjustment */
+  }
+
+  /* Ensure the terrain container adapts to mobile */
+  #terrain-container {
+    width: 100%;
+    height: 200px; /* Example height adjustment */
+  }
+}
