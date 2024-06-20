@@ -5083,6 +5083,7 @@ body,
 html {
   cursor: crosshair;
   overflow-x: hidden;
+  overflow-y: hidden;
   margin: 0;
 }
 
