@@ -177,7 +177,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* Hidden by default */
 #mobile-message {
   display: none;
   position: fixed;
@@ -190,63 +189,4 @@ a:hover {
   padding: 15px;
   font-size: 16px;
   z-index: 1000;
-}
-
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-  /* Show the mobile message */
-  #mobile-message {
-    display: block;
-  }
-
-  /* Hide the datetime element on mobile */
-  #datetime {
-    display: none;
-  }
-
-  /* Hide the typed strings on mobile */
-  #typed-strings {
-    display: none;
-  }
-
-  /* Adjust body styling for mobile */
-  body.minimal {
-    font-size: 14px; /* Example adjustment */
-  }
-
-  /* Adjust container padding/margins for mobile */
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  /* Adjust the crosshair container for mobile */
-  .crosshair-container {
-    display: none; /* Example to hide crosshair on mobile */
-  }
-
-  /* Adjust the navbar for mobile */
-  .navbar-toggle {
-    margin-right: 20px; /* Example adjustment */
-  }
-
-  .navbar-collapse {
-    text-align: center; /* Center align menu items */
-  }
-
-  .navbar-nav > li {
-    display: block; /* Stack nav items vertically */
-    margin: 10px 0; /* Add spacing between items */
-  }
-
-  /* Adjust hero text size for mobile */
-  .hero-full-wrapper .text-content h1 {
-    font-size: 24px; /* Example adjustment */
-  }
-
-  /* Ensure the terrain container adapts to mobile */
-  #terrain-container {
-    width: 100%;
-    height: 200px; /* Example height adjustment */
-  }
 }
