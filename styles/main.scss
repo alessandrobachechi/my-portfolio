@@ -11,52 +11,105 @@
 // Import your custom SCSS
 @import "mashup-example";
 
+/* main.css */
+
+/* Reset margin and padding, and set height to 100% for body and html */
 body,
 html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   cursor: crosshair;
   overflow-x: hidden;
   overflow-y: hidden;
-  margin: 0;
 }
 
+/* Container to center the description content */
+.container.description-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Wrapper for the hero content */
+.hero-full-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive font sizes for different screen widths */
+@media (max-width: 768px) {
+  .container.description-container {
+    padding: 20px;
+  }
+
+  .hero-full-wrapper {
+    padding: 10px;
+  }
+
+  .text-content h1 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-content h1 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-content h1 {
+    font-size: 40px;
+  }
+}
+
+/* Description containers for different sections */
 .description-container.container {
   position: absolute;
   top: 400px;
   left: 160px;
   z-index: 10;
   pointer-events: none;
+}
 
-  h1 {
-    color: white;
-  }
+.description-container.container h1 {
+  color: white;
 }
 
 .descriptions-container.container {
   position: absolute;
   top: 150px;
   left: 100px;
+}
 
-  h1 {
-    color: black;
-  }
+.descriptions-container.container h1 {
+  color: black;
 }
 
 .descriptions-container-2.container {
   position: absolute;
   top: 220px;
   left: 100px;
-
-  h1 {
-    color: black;
-  }
 }
 
+.descriptions-container-2.container h1 {
+  color: black;
+}
+
+/* Coordinates display */
 #coordinates {
   position: absolute;
-  /* ackground: rgba(0, 0, 0, 0.5); */
   color: white;
   padding: 5px;
-  /* border-radius: 3px; */
   font-size: 12px;
   pointer-events: none;
   opacity: 0.7;
@@ -64,8 +117,8 @@ html {
   z-index: 20;
 }
 
+/* Date and time display */
 #datetime {
-  position: absolute;
   position: fixed;
   top: 28px;
   right: 160px;
@@ -80,6 +133,7 @@ html {
   z-index: 9999;
 }
 
+/* Crosshair styles */
 #crosshair-right,
 #crosshair-left,
 #crosshair-bottom,
@@ -94,19 +148,23 @@ html {
   width: 100%;
   height: 1px;
 }
+
 #crosshair-left {
   width: 2000px;
   height: 1px;
 }
+
 #crosshair-top {
   width: 1px;
   height: 2000px;
 }
+
 #crosshair-bottom {
   width: 1px;
   height: 100%;
 }
 
+/* Container for crosshair */
 .crosshair-container {
   position: fixed;
   inset: 0;
@@ -117,21 +175,25 @@ html {
   pointer-events: none;
 }
 
+/* Navbar styles */
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   z-index: 10;
 }
 
+/* General container styles */
 .container {
   width: 80%;
 }
 
+/* Full-width column */
 .col-xs-12 {
   width: 100%;
   margin-left: -10px;
   margin-top: -60px;
 }
 
+/* Project item styles */
 .project {
   display: flex;
   justify-content: space-between;
@@ -167,6 +229,7 @@ html {
   color: black;
 }
 
+/* Link styles */
 a {
   color: black;
   text-decoration: none;
@@ -177,6 +240,7 @@ a:hover {
   text-decoration: none;
 }
 
+/* Mobile message display */
 #mobile-message {
   display: none;
   position: fixed;
