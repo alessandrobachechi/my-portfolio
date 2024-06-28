@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AleBachechi | Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="I'm a junior web developer..." />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="preview.js"></script>
+    <script type="module" src="cross.js"></script>
+    <!-- <script type="module" src="terrain.js"></script> -->
+  </head>
+  <body>
+    <!-- <div id="terrain-container"></div> -->
+
+    <div class="crosshair-container">
+      <div id="crosshair-left"></div>
+      <div id="crosshair-right"></div>
+      <div id="crosshair-top"></div>
+      <div id="crosshair-bottom"></div>
+    </div>
+
+    <div id="datetime"></div>
+
+    <div id="site-border-left"></div>
+    <div id="site-border-right"></div>
+    <div id="site-border-top"></div>
+    <div id="site-border-bottom"></div>
+    <h1>
+      <span id="typed-strings">
+        <span>I'm Alessandro Bachechi</span>
+        <span>based in Milan, Italy</span>
+        <span>I'm Frontend Developer</span>
+      </span>
+      <span id="typed"></span>
+    </h1>
+    <div class="container descriptions-container">
+      <div class="project">
+        <div class="project-info">
+          <span class="project-number">PROJECT /01</span>
+          <span class="project-title"
+            ><a href="https://cosmogen.alessandrobachechi.com/"
+              >COSMOGEN</a
+            ></span
+          >
+        </div>
+        <div class="project-details">
+          <span>ZDOG – HTML - CSS - JAVASCRIPT - THREE.JS</span>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-info">
+          <span class="project-number">PROJECT /02</span>
+          <span class="project-title"
+            ><a href="https://geomap.alessandrobachechi.com/">GEOMAP</a></span
+          >
+        </div>
+        <div class="project-details">
+          <span>HTML – CSS – LEAFLET - REACT - SUPABASE</span>
+        </div>
+      </div>
+    </div>
+    <div id="preview-container" style="display: none; position: absolute">
+      <img
+        id="preview-image"
+        src=""
+        alt="Project Preview"
+        style="max-width: 250px; max-height: 250px"
+      />
+    </div>
+
+    <div class="social-icons">
+      <a href="assets/alessandro bachechi.pdf" download>My CV</a>
+      <a href="https://github.com/alessandrobachechi" target="_blank">GitHub</a>
+      <a href="https://twitter.com/alebachechi" target="_blank">Twitter</a>
+      <a
+        href="https://www.linkedin.com/in/alessandro-bachechi-a798032b3/"
+        target="_blank"
+        >LinkedIn</a
+      >
+      <a href="mailto:alessandrobachechi13@gmail.com">Email</a>
+    </div>
+  </body>
+</html>

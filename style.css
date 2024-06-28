@@ -1,0 +1,171 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  cursor: crosshair;
+}
+
+@font-face {
+  font-family: "Canela";
+  src: url("./webfonts/Canela-Light.woff2") format("woff2"),
+    url("./webfonts/Canela-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-family: "canela" ;
+  font-size: 8vw;
+  margin: 0;
+  position: absolute;
+  color: whitesmoke;
+  text-align: center;
+  width: 100%;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.descriptions-container.container {
+  position: absolute;
+  top: 160px;
+  left: 150px;
+} 
+
+.descriptions-container.container h1 {
+  color: whitesmoke;
+}
+
+/* General container styles */
+.container {
+  width: 80%;
+}
+
+/* Project item styles */
+.project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid whitesmoke;
+  opacity: 0.2;
+}
+
+.project:hover{
+  opacity: 0.5;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.project-number {
+  font-size: 0.8em;
+  color: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.project-title {
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.project-details {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  color: whitesmoke;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Link styles */
+a {
+  color:whitesmoke;
+  text-decoration: none;
+}
+
+
+/* Crosshair styles */
+#crosshair-right,
+#crosshair-left,
+#crosshair-bottom,
+#crosshair-top {
+  position: absolute;
+  background: white;
+  z-index: 20;
+  opacity: 0.5;
+}
+
+#crosshair-right {
+  width: 100%;
+  height: 1px;
+}
+
+#crosshair-left {
+  width: 2000px;
+  height: 1px;
+}
+
+#crosshair-top {
+  width: 1px;
+  height: 2000px;
+}
+
+#crosshair-bottom {
+  width: 1px;
+  height: 100%;
+}
+
+/* Container for crosshair */
+.crosshair-container {
+  position: fixed;
+  inset: 0;
+  width: 100svw;
+  height: 100svh;
+  opacity: 0.2;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+#datetime {
+  position: fixed;
+  top: 725px;
+  right: 130px;
+  background: rgba(0, 0, 0, 0.7);
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 14px;
+  text-align: right;
+  opacity: 0.5;
+  mix-blend-mode: difference;
+  font-family: 'Courier New', Courier, monospace;
+} 
+
+.social-icons {
+  position: fixed;
+  bottom: 42px;
+  left: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  
+}
+
+.social-icons a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1em;
+  opacity: 0.2;
+}
+
+.social-icons a:hover {
+  opacity: 0.5;
+}
+
+
+
+
+
+
+
