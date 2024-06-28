@@ -17,11 +17,11 @@ document.addEventListener("mousemove", (event) => {
   document.getElementById("crosshair-bottom").style.top =
     event.pageY - window.scrollY + 20 + "px";
 
-  document.getElementById("coordinates").style.left = event.pageX + 25 + "px";
+  /* document.getElementById("coordinates").style.left = event.pageX + 25 + "px";
   document.getElementById("coordinates").style.top = event.pageY + 25 + "px";
   document.getElementById(
     "coordinates"
-  ).textContent = `X: ${event.pageX}, Y: ${event.pageY}`;
+  ).textContent = `X: ${event.pageX}, Y: ${event.pageY}`; */
 });
 
 function updateDateTime() {
