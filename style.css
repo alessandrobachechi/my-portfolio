@@ -3,7 +3,7 @@ html {
   margin: 0;
   padding: 0;
   cursor: crosshair;
-  background-color: black;
+  background-color: rgb(33, 33, 33);
 }
 
 @font-face {
