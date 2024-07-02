@@ -4,19 +4,16 @@ import Splitting from "splitting";
 import gsap from "gsap";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-// Experience setup
 const experience = {};
 const mouse = { x: 0, y: 0 };
 
 document.addEventListener("DOMContentLoaded", () => {
   experience.state = "title";
 
-  // Create the scene
   experience.scene = new THREE.Scene();
   experience.scene.background = new THREE.Color("hsl(0, 0%, 4%)");
   experience.clock = new THREE.Clock();
 
-  // Create the camera
   experience.camera = new THREE.PerspectiveCamera(
     45,
     window.innerWidth / window.innerHeight,
