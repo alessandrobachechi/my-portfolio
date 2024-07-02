@@ -1,33 +1,47 @@
 import "./style.css";
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
-
 import * as THREE from "three";
 import Splitting from "splitting";
 import gsap from "gsap";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
+// Experience setup
 const experience = {};
 const mouse = { x: 0, y: 0 };
 
 document.addEventListener("DOMContentLoaded", () => {
   experience.state = "title";
 
-  experience.scene = createScene();
+  // Create the scene
+  experience.scene = new THREE.Scene();
   experience.scene.background = new THREE.Color("hsl(0, 0%, 4%)");
   experience.clock = new THREE.Clock();
-  experience.camera = createCamera();
+
+  // Create the camera
+  experience.camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
   experience.camera.position.set(0, 1, 3);
-  experience.camera.rotation.set(0, 0, 0);
-  experience.renderer = createRenderer();
+
+  // Create the renderer
+  experience.renderer = new THREE.WebGLRenderer({ antialias: true });
+  experience.renderer.setSize(window.innerWidth, window.innerHeight);
+  experience.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  document.body.appendChild(experience.renderer.domElement);
+
+  // Setup the background terrain
+  setupTerrain(experience);
+
+  // Animation group and mixer
   experience.animationGroup = new THREE.AnimationObjectGroup();
   experience.mixer = new THREE.AnimationMixer(experience.animationGroup);
 
-  Splitting({
-    target: "h1",
-    by: "chars",
-  });
+  // Splitting for text animations
+  Splitting({ target: "h1", by: "chars" });
 
+  // GSAP text animation
   gsap.from("h1 .char", {
     y: "5%",
     opacity: 0,
@@ -82,36 +96,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const createScene = () => {
-  return new THREE.Scene();
+// Setup background terrain
+const setupTerrain = (experience) => {
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(50, 50, 50).normalize();
+  experience.scene.add(light);
+
+  const ambientLight = new THREE.AmbientLight(0x404040);
+  experience.scene.add(ambientLight);
+
+  function generateRandomHeight() {
+    return Math.random() * 25;
+  }
+
+  const geometry = new THREE.PlaneGeometry(200, 200, 20, 10);
+  const material = new THREE.LineBasicMaterial({
+    color: 0xffffff,
+    linewidth: 1,
+    transparent: true,
+    opacity: 0.2,
+  });
+
+  const createRandomWireframe = () => {
+    const vertices = geometry.attributes.position.array;
+    for (let i = 0; i < vertices.length; i += 3) {
+      vertices[i + 2] = generateRandomHeight();
+    }
+    geometry.computeVertexNormals();
+
+    const wireframe = new THREE.WireframeGeometry(geometry);
+    const line = new THREE.LineSegments(wireframe, material);
+    line.rotation.x = -Math.PI / 2;
+    line.position.y = -20; // Lower the plane to ensure it's visible in the background
+    return line;
+  };
+
+  const terrain = createRandomWireframe();
+  experience.scene.add(terrain);
+
+  experience.terrain = terrain; // Store terrain in the experience object for access in render loop
 };
 
-const createCamera = () => {
-  return new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-};
-
-const createRenderer = () => {
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  document.body.appendChild(renderer.domElement);
-  return renderer;
-};
-
+// Load the model and animations
 const setupScene = (experience) => {
   const loader = new GLTFLoader();
-  /* const light = new THREE.AmbientLight(0xffffff); // soft white light
-  experience.scene.add(light); */
 
   // Add lights
   let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
   hemiLight.position.set(0, 50, 0);
-  // Add hemisphere light to scene
   experience.scene.add(hemiLight);
 
   let d = 8.25;
@@ -125,7 +157,6 @@ const setupScene = (experience) => {
   dirLight.shadow.camera.right = d;
   dirLight.shadow.camera.top = d;
   dirLight.shadow.camera.bottom = d * -1;
-  // Add directional Light to scene
   experience.scene.add(dirLight);
 
   loader.load(
@@ -174,6 +205,11 @@ const render = (experience) => {
     moveJoint(mouse, experience.spine, 30);
   }
 
+  // Rotate terrain
+  if (experience.terrain) {
+    experience.terrain.rotation.z += 0.001;
+  }
+
   experience.mixer.update(delta);
   experience.renderer.render(experience.scene, experience.camera);
 };
@@ -209,32 +245,21 @@ const getMouseDegrees = (x, y, degreeLimit) => {
 
   let w = { x: window.innerWidth, y: window.innerHeight };
 
-  // Left (Rotates neck left between 0 and -degreeLimit)
-
-  // 1. If cursor is in the left half of screen
   if (x <= w.x / 2) {
-    // 2. Get the difference between middle of screen and cursor position
     xdiff = w.x / 2 - x;
-    // 3. Find the percentage of that difference (percentage toward edge of screen)
     xPercentage = (xdiff / (w.x / 2)) * 100;
-    // 4. Convert that to a percentage of the maximum rotation we allow for the neck
     dx = ((degreeLimit * xPercentage) / 100) * -1;
   }
-  // Right (Rotates neck right between 0 and degreeLimit)
   if (x >= w.x / 2) {
     xdiff = x - w.x / 2;
     xPercentage = (xdiff / (w.x / 2)) * 100;
     dx = (degreeLimit * xPercentage) / 100;
   }
-  // Up (Rotates neck up between 0 and -degreeLimit)
   if (y <= w.y / 2) {
     ydiff = w.y / 2 - y;
     yPercentage = (ydiff / (w.y / 2)) * 100;
-    // Note that I cut degreeLimit in half when she looks up
     dy = ((degreeLimit * 0.5 * yPercentage) / 100) * -1;
   }
-
-  // Down (Rotates neck down between 0 and degreeLimit)
   if (y >= w.y / 2) {
     ydiff = y - w.y / 2;
     yPercentage = (ydiff / (w.y / 2)) * 100;
