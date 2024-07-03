@@ -123,8 +123,8 @@ const setupTerrain = (experience) => {
 
     const wireframe = new THREE.WireframeGeometry(geometry);
     const line = new THREE.LineSegments(wireframe, material);
-    line.rotation.x = -Math.PI / 2;
-    line.position.y = -20; // Lower the plane to ensure it's visible in the background
+    line.rotation.x = -20; // Lower the plane to ensure it's visible in the background
+    line.position.y = -50;
     return line;
   };
 

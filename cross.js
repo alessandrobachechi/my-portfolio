@@ -41,5 +41,5 @@ var typed = new Typed("#typed", {
   typeSpeed: 100,
   backSpeed: 20,
   loop: true,
-  loopCount: Infinity,
+  loopCount: 1,
 });
