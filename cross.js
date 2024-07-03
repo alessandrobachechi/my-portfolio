@@ -38,8 +38,8 @@ setInterval(updateDateTime, 100);
 
 var typed = new Typed("#typed", {
   stringsElement: "#typed-strings",
-  typeSpeed: 100,
+  typeSpeed: 80,
   backSpeed: 20,
   loop: true,
-  loopCount: 1,
+  loopCount: 2,
 });
