@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const rect = project.getBoundingClientRect();
       previewContainer.style.top = `${event.clientY}px`;
       previewContainer.style.left = `${event.clientX + 20}px`; // Offset for better positioning
-      previewImage.src = `./assets/project${index + 1}-preview.jpg`;
+      previewImage.src = `./public/project${index + 1}-preview.jpg`;
       previewContainer.style.display = "block";
     });
 
